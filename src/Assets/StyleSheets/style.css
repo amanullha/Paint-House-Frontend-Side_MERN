@@ -1,0 +1,23 @@
+
+
+.productDetailsBG{
+
+    background: url('https://i.ibb.co/FJH5wSW/rm222batch3-kul-15.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.productAddToCartBG{
+
+    /* background: url('https://i.ibb.co/qJMx4T4/v952-bb-038-g.jpg'); */
+    background: url('https://i.ibb.co/b5p1wbd/17973908.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.myOrderBG{
+
+    /* background: url('https://i.ibb.co/qJMx4T4/v952-bb-038-g.jpg'); */
+    background: url('https://i.ibb.co/HHHGFjq/v915-wit-002.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}

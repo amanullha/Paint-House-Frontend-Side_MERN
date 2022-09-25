@@ -1,0 +1,19 @@
+
+.main-product-button{
+    display: none;
+}
+.main-product-card:hover .main-product-button{
+    display: flex;
+}
+
+ .card-child{
+
+  height: 100px;
+  transition: height 2s;
+
+}
+.card-parent:hover .card-child{
+
+  height: 100%;
+
+}
