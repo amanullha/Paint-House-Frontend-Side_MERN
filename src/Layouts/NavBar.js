@@ -101,7 +101,7 @@ const NavBar = ({ children }) => {
                 <>
                     <li><NavLink className={`${path === 'login' ? "text-yellow-600" : 'text-white'}bg-transparent text-white`} to='/login'> Login</NavLink></li>
 
-                    <li><NavLink className={`${path === 'login' ? "text-yellow-600" : 'text-white'}bg-transparent text-white`} to='/signup'> SignUp</NavLink></li>
+                    <li><NavLink className={`${path === 'login' ? "text-yellow-600" : 'text-white'}bg-transparent text-white`} to='/sign-up'> SignUp</NavLink></li>
 
 
                 </>

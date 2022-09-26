@@ -8,12 +8,19 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../Additional/Loading';
 import auth from '../firebase.init';
 import { BsCartCheck } from 'react-icons/bs'
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
+
+const stripePromise = loadStripe('pk_test_51LmAoEB3NUX3b711lpHJd1J2qH4g2qpFs5cvbCQISFTRE3KsAeh16xRaYIMSMWxTLxDI0kny4T0AgsZ4s43Ug1Q300vQggvRiM');
+
 
 const MyOrders = () => {
 
     // const [orders, setOrders] = useState([])
     const [user, loading, error] = useAuthState(auth);
     const [cancelItem, setCancelItem] = useState(null)
+    const [paymentProduct, setPaymentProduct] = useState(null);
 
     const navigate = useNavigate();
 
@@ -141,7 +148,7 @@ const MyOrders = () => {
                                                 </label>
 
 
-                                                <label className=' gap-2 flex items-center border-2 border-transparent hover:border-green-200 rounded-full px-2 py-1 active:bg-green-300 cursor-pointer text-green-600 bg-green-50'>
+                                                <label onClick={() => setPaymentProduct(order)} htmlFor='payment-modal' className=' gap-2 flex items-center border-2 border-transparent hover:border-green-200 rounded-full px-2 py-1 active:bg-green-300 cursor-pointer text-green-600 bg-green-50'>
                                                     <BsCartCheck />
                                                     <span >Place Order</span>
 
@@ -191,6 +198,94 @@ const MyOrders = () => {
 
                             <label htmlFor="cancel-modal" className='btn btn-success'>NO</label>
                         </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <div className="modal-action">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            {/* PAYMENT MODAL  */}
+
+
+            <input type="checkbox" id="payment-modal" className="modal-toggle" />
+
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+
+                    <div className=' w-full bg-yellow-700'>
+                        <label onClick={() => setPaymentProduct(null)} htmlFor="payment-modal" className='float-right bg-red-100 px-2 py-1 rounded-full text-red-700 cursor-pointer'>X</label>
+                    </div>
+
+                    <div>
+
+
+                        <h1>You have ordered  <span className='text-yellow-700'> {paymentProduct?.productName}</span> at {paymentProduct?.purchaseDate}</h1>
+
+                        <h1 className='my-3'>Total payable : {paymentProduct?.purcheseQuentity} x {paymentProduct?.perUnitPrice} = <span className='font-bold ml-1'>{paymentProduct?.purcheseQuentity * paymentProduct?.perUnitPrice} </span></h1>
+
+
+
+                        <div>
+
+
+                            {
+                                paymentProduct ?
+
+                                    <Elements stripe={stripePromise}>
+                                        <CheckoutForm order={paymentProduct} refetch={refetch} />
+                                    </Elements>
+
+                                    : ''
+
+
+                            }
+
+                            {/* <Elements stripe={stripePromise}>
+                                <CheckoutForm order={paymentProduct} />
+                            </Elements> */}
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+                        {/* <div className='flex justify-center w-full mt-5 gap-5'>
+
+
+                            <label htmlFor="payment-modal" onClick={handleDeleteOrderedItem} className='btn btn-error'>YES</label>
+
+                            <label htmlFor="payment-modal" className='btn btn-success'>NO</label>
+
+
+                        </div> */}
+
+
+
                     </div>
 
 
