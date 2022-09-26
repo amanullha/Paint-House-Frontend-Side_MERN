@@ -13,7 +13,7 @@ const AllUsers = () => {
 
     const [admin, adminLoading] = useAdmin(user)
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://paint-house-backend.onrender.com/users', {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -33,7 +33,7 @@ const AllUsers = () => {
 
         console.log("make admin : ", email);
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://paint-house-backend.onrender.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -70,7 +70,7 @@ const AllUsers = () => {
 
         else {
 
-            fetch(`http://localhost:5000/user/remove-admin/${email}`, {
+            fetch(`https://paint-house-backend.onrender.com/user/remove-admin/${email}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -113,7 +113,7 @@ const AllUsers = () => {
 
         console.log("delete user : ", _id);
 
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://paint-house-backend.onrender.com/users/${_id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

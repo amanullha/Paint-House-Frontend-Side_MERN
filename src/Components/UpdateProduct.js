@@ -40,7 +40,7 @@ const UpdateProduct = ({ callFrom }) => {
 
 
 
-    const { data: products, isLoading, refetch } = useQuery('productsData', () => fetch(`http://localhost:5000/products`, {
+    const { data: products, isLoading, refetch } = useQuery('productsData', () => fetch(`https://paint-house-backend.onrender.com/products`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -67,7 +67,7 @@ const UpdateProduct = ({ callFrom }) => {
         }
         if (deleteProduct) {
 
-            fetch(`http://localhost:5000/product/${deleteProduct}`, {
+            fetch(`https://paint-house-backend.onrender.com/product/${deleteProduct}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',
@@ -110,7 +110,7 @@ const UpdateProduct = ({ callFrom }) => {
         console.log("Product: ", product);
 
 
-        fetch("http://localhost:5000/product", {
+        fetch("https://paint-house-backend.onrender.com/product", {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

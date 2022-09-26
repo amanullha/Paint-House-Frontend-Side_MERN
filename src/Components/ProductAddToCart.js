@@ -23,7 +23,7 @@ const ProductAddToCart = () => {
     const [isButtonDisable, setIsButtonDisable] = useState(true)
     const navigate = useNavigate();
 
-    const { data: product, isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/products/${productId}`, {
+    const { data: product, isLoading, refetch } = useQuery('products', () => fetch(`https://paint-house-backend.onrender.com/products/${productId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -73,7 +73,7 @@ const ProductAddToCart = () => {
         const orderedQuantity = parseInt(purchaseUnitInput);
         // const existingQuantity = product?.availableQuantity - orderedQuantity;
 
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://paint-house-backend.onrender.com/products/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -119,7 +119,7 @@ const ProductAddToCart = () => {
         if (user) {
 
             order.userEmail = user?.email;
-            fetch(`http://localhost:5000/orders`, {
+            fetch(`https://paint-house-backend.onrender.com/orders`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

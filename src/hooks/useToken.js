@@ -19,7 +19,7 @@ const useToken = (user) => {
         const email = user?.user?.email;
         if (email) {
 
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://paint-house-backend.onrender.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -39,7 +39,7 @@ const useToken = (user) => {
 
     }, [user])
 
-    console.log("t: ",token);
+    console.log("t: ", token);
 
     return [token];
 

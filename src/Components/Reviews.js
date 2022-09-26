@@ -16,7 +16,7 @@ const Reviews = () => {
 
     useState(() => {
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://paint-house-backend.onrender.com/reviews', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

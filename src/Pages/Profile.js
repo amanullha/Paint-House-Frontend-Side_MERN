@@ -25,7 +25,7 @@ const Profile = () => {
     useEffect(() => {
         setLoader(true);
 
-        fetch(`http://localhost:5000/my-profile?email=${user?.email}`, {
+        fetch(`https://paint-house-backend.onrender.com/my-profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -54,7 +54,7 @@ const Profile = () => {
     if (loading || loader) {
         <Loading />
     }
-   
+
 
     const educationOnChange = (e) => {
         const newValue = e.target.value;
@@ -90,7 +90,7 @@ const Profile = () => {
         }
         // console.log("update profile: ", profileData);
 
-        fetch(`http://localhost:5000/my-profile/${profile._id}`, {
+        fetch(`https://paint-house-backend.onrender.com/my-profile/${profile._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

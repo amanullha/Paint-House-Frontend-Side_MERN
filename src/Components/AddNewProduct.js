@@ -54,7 +54,7 @@ const AddNewProduct = () => {
 
                     // add product
 
-                    fetch('http://localhost:5000/product', {
+                    fetch('https://paint-house-backend.onrender.com/product', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

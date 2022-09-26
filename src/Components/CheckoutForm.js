@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const CheckoutForm = ( props ) => {
+const CheckoutForm = (props) => {
 
     const [errorMgs, setErrorMgs] = useState('');
     const [clientSecret, setClientSecret] = useState('')
@@ -15,15 +15,15 @@ const CheckoutForm = ( props ) => {
     const elements = useElements();
 
     // const { productName, productId, purcheseQuentity, perUnitPrice, userEmail } = order;
-    const order=props?.order;
-    const refetch=props?.refetch;
+    const order = props?.order;
+    const refetch = props?.refetch;
 
     const productName = order?.productName;
     const productId = order?.productId;
     const purcheseQuentity = order?.purcheseQuentity;
     const perUnitPrice = order?.perUnitPrice;
     const userEmail = order?.userEmail;
-    const orderId=order?._id;
+    const orderId = order?._id;
 
 
     const price = purcheseQuentity * perUnitPrice;
@@ -31,9 +31,9 @@ const CheckoutForm = ( props ) => {
     //payment useEffect
     useEffect(() => {
 
-       
 
-            fetch('http://localhost:5000/create-payment-intent', {
+
+        fetch('https://paint-house-backend.onrender.com/create-payment-intent', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -49,7 +49,7 @@ const CheckoutForm = ( props ) => {
                 }
 
             })
-        
+
 
     }, [price])
 
@@ -130,38 +130,38 @@ const CheckoutForm = ( props ) => {
 
             //update payment status at backend 
 
-            const payment={
-                
-                productName:productName,
-                orderId:orderId,
-                transactionId:paymentIntent.id,
+            const payment = {
+
+                productName: productName,
+                orderId: orderId,
+                transactionId: paymentIntent.id,
 
             }
 
-            fetch(`http://localhost:5000/order/payment-status/${orderId}`,{
+            fetch(`https://paint-house-backend.onrender.com/order/payment-status/${orderId}`, {
 
-            method: "PATCH",
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(payment)
+                method: "PATCH",
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
 
-
-            })
-            .then(res=>res.json())
-            .then(data=>{
-
-                setProcessing(false);
-                refetch();
 
             })
+                .then(res => res.json())
+                .then(data => {
+
+                    setProcessing(false);
+                    refetch();
+
+                })
 
         }
 
 
 
-if(processing)return <h1>Loading...</h1>
+        if (processing) return <h1>Loading...</h1>
 
 
     }

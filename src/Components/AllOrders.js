@@ -16,7 +16,7 @@ const AllOrders = () => {
     const navigate = useNavigate();
 
 
-    const { data: orders, isLoading, refetch } = useQuery('my-orders', () => fetch(`http://localhost:5000/orders`, {
+    const { data: orders, isLoading, refetch } = useQuery('my-orders', () => fetch(`https://paint-house-backend.onrender.com/orders`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -33,7 +33,7 @@ const AllOrders = () => {
 
         if (cancelItem) {
 
-            fetch(`http://localhost:5000/order/${cancelItem._id}`, {
+            fetch(`https://paint-house-backend.onrender.com/order/${cancelItem._id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',
@@ -59,7 +59,7 @@ const AllOrders = () => {
 
     const addCancelOrderQuantityToDb = (item) => {
 
-        fetch(`http://localhost:5000/products/${item?.productId}`, {
+        fetch(`https://paint-house-backend.onrender.com/products/${item?.productId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -149,7 +149,7 @@ const AllOrders = () => {
 
 
 
-                                                    
+
 
                                                 </td>
 

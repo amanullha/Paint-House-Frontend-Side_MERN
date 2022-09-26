@@ -16,7 +16,7 @@ const useAdmin = (user) => {
         const getTestAdmin = async () => {
 
 
-            fetch(`http://localhost:5000/admin/${email}`,
+            fetch(`https://paint-house-backend.onrender.com/admin/${email}`,
 
                 {
                     method: 'GET',

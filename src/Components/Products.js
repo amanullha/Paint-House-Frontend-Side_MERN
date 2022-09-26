@@ -21,7 +21,7 @@ const Products = ({ callFrom = '' }) => {
 
     const navigate = useNavigate();
 
-    const { isLoading, error, data: products, refetch } = useQuery(['productsArray'], () => fetch(`http://localhost:5000/get-products?currentPage=${currentPage}&totalProductsPerPage=${totalProductsPerPage}`).then(res => res.json()))
+    const { isLoading, error, data: products, refetch } = useQuery(['productsArray'], () => fetch(`https://paint-house-backend.onrender.com/get-products?currentPage=${currentPage}&totalProductsPerPage=${totalProductsPerPage}`).then(res => res.json()))
 
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const Products = ({ callFrom = '' }) => {
     useEffect(() => {
 
         const getTotalProductCount = async () => {
-            const data = await axios.get(`http://localhost:5000/get-products-count`)
+            const data = await axios.get(`https://paint-house-backend.onrender.com/get-products-count`)
 
             // console.log("data: ", data);
 

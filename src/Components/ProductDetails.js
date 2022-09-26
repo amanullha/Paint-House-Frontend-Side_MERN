@@ -23,7 +23,7 @@ const ProductDetails = () => {
     const productId = useParams()._id;
     const navigate = useNavigate();
 
-    const { data: product, isLoading, refetch } = useQuery('products', () => fetch(`http://localhost:5000/products/${productId}`, {
+    const { data: product, isLoading, refetch } = useQuery('products', () => fetch(`https://paint-house-backend.onrender.com/products/${productId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',

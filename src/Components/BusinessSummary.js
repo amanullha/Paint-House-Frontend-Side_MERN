@@ -8,7 +8,7 @@ const BusinessSummary = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/summary')
+        fetch('https://paint-house-backend.onrender.com/summary')
             .then(res => res.json())
             .then(data => {
                 setSummary(data)
