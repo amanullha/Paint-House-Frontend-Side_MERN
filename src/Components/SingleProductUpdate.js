@@ -131,6 +131,7 @@ const SingleProductUpdate = () => {
                     toast.success("Product updated");
                     // updateProductId(null);
                     refetch();
+                    setSave(false);
 
                 } else {
                     toast.warning("Something Wrong!")
