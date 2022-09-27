@@ -1,6 +1,25 @@
+## FrontEnd: React js, Tailwind, DaisyUI, Firebase
+
+## BackEnd: Node js, Express Js,MongoDB
+
+## Features:
+
+- Authentication user validation using firebase
+- Implement role based routing
+- Add/Delete/Update product by an admin
+- Delete unpaid orders by admin
+- Ordered/ update/delete products by the user
+- cancel unpaid order/update product quantity via
+- user and also provide reviews
+- check my orders via user and all the
+- order/admin/users via admin
+- check and update the profile of the user/admin
+- Used JWT for secure api
+- Implement payment system with stripe js
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project live: [Link](https://paint-house-e0a95.web.app/).
 
 ## Available Scripts
 
