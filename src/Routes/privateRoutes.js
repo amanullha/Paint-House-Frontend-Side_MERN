@@ -1,5 +1,6 @@
 import ProductAddToCart from "../Components/ProductAddToCart";
 import Products from "../Components/Products";
+import SingleProductUpdate from "../Components/SingleProductUpdate";
 import Profile from "../Pages/Profile";
 
 export const privateRoutes = [
@@ -19,6 +20,11 @@ export const privateRoutes = [
         Name: "Profile",
         Path: "/profile",
         Component: Profile,
+    },
+    {
+        Name: "ProductUpdate",
+        Path: "/product-update/:_id",
+        Component: SingleProductUpdate,
     },
 
 ]

@@ -92,6 +92,9 @@ const UpdateProduct = ({ callFrom }) => {
 
         }
     }
+
+
+    
     const handleUpdateProductItem = () => {
 
         if (!admin) {
