@@ -40,7 +40,7 @@ const SingleProductUpdate = () => {
 
 
 
-    const { data: product, isLoading, refetch } = useQuery('productsData', () => fetch(`http://localhost:5000/products/${_id}`, {
+    const { data: product, isLoading, refetch } = useQuery('productsData', () => fetch(`https://paint-house-backend.onrender.com/products/${_id}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -113,7 +113,7 @@ const SingleProductUpdate = () => {
 
 
 
-        fetch(`http://localhost:5000/update-single-product/${_id}`, {
+        fetch(`https://paint-house-backend.onrender.com/update-single-product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
