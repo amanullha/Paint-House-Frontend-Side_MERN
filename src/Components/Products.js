@@ -56,7 +56,7 @@ const Products = ({ callFrom = '' }) => {
 
     }
 
-    if (isLoading || loading || adminLoading) return <Loading />
+    if (isLoading || loading || adminLoading) return <div className='my-10 flex justify-center items-center'><Loading /></div>
 
     return (
         <div className='py-10 mx-5 lg:mx-10 xl:mx-20'>

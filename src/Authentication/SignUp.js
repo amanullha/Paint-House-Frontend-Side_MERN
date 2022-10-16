@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -23,12 +23,44 @@ const SignUp = () => {
     const [sendEmailVerification, sending, verifyError] = useSendEmailVerification(auth);
 
 
-    const [token, setToken] = useToken(user);
+    const [token] = useToken(user);
 
     const navigate = useNavigate();
     let location = useLocation();
 
 
+
+
+    let from = location.state?.from?.pathname || "/";
+
+    // if (token) {
+    //     // navigate(from, { replace: true });
+    //     navigate('/home')
+
+
+    // }
+    // if (user) {
+    //      navigate(from, { replace: true });
+
+    // }
+
+
+
+    useEffect(() => {
+
+        const t = localStorage.getItem('accessToken');
+
+
+
+        if (token && token !== null) {
+            navigate(from, { replace: true });
+        }
+        if (t && t !== null && t !== undefined) {
+            navigate(from, { replace: true });
+        }
+
+
+    }, [token, from, navigate])
 
 
     if (loading || updating || sending) {
@@ -41,18 +73,6 @@ const SignUp = () => {
         errorMessage = <span className="label-text-alt text-red-500 ">{error?.message} || {UpdateError?.message} || {verifyError.message}</span>
     }
 
-    let from = location.state?.from?.pathname || "/";
-
-    if (token) {
-        // navigate(from, { replace: true });
-        navigate('/home')
-
-
-    }
-    // if (user) {
-    //      navigate(from, { replace: true });
-
-    // }
 
 
     const onSubmit = async (data) => {

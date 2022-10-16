@@ -28,12 +28,22 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
 
+
+
     useEffect(() => {
 
-        if (token) {
-            navigate(from, { replace: true });
+        const t = localStorage.getItem('accessToken');
 
+
+
+        if (token && token !== null) {
+            navigate(from, { replace: true });
         }
+        if (t && t !== null && t !== undefined) {
+            navigate(from, { replace: true });
+        }
+
+        
     }, [token, from, navigate])
 
 
