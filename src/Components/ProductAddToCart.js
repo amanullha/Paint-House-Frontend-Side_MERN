@@ -15,6 +15,9 @@ import '../Assets/StyleSheets/style.css'
 
 const ProductAddToCart = () => {
 
+    const [onLoading, setOnLoading] = useState(false);
+
+
     const [user, loading, error] = useAuthState(auth);
 
     const productId = useParams()._id;
@@ -70,6 +73,8 @@ const ProductAddToCart = () => {
 
     const handlePlaceAddToCart = () => {
 
+        setOnLoading(true);
+
         const orderedQuantity = parseInt(purchaseUnitInput);
         // const existingQuantity = product?.availableQuantity - orderedQuantity;
 
@@ -84,7 +89,9 @@ const ProductAddToCart = () => {
         })
             .then(res => res.json())
             .then(data => {
+
                 console.log("updated data; ", data);
+
                 if (data?.acknowledged) {
                     toast.success("Product added to your cart")
                     refetch();
@@ -129,6 +136,8 @@ const ProductAddToCart = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log("order Added data: ", data);
+                    setOnLoading(false)
+
 
                 })
         }
@@ -197,17 +206,32 @@ const ProductAddToCart = () => {
 
                             <div>
                                 {
-                                    parseInt(purchaseUnitInput) < product?.minimumOrder || parseInt(purchaseUnitInput) > product?.availableQuantity || purchaseUnitInput?.length === 0 ?
+                                    onLoading ?
 
+                                        <>
+                                            <button
+                                                disabled
 
-                                        <button
-                                            disabled
+                                                className=' md:w-3/4 lg:w-2/4 w-full  mt-5 md:text-2xl md:px-12 px-5 py-2 bg-gray-300 rounded-lg text-white font-bold md:tracking-widest '>Loading...</button>
 
-                                            className=' md:w-3/4 lg:w-2/4 w-full  mt-5 md:text-2xl md:px-12 px-5 py-2 bg-gray-300 rounded-lg text-white font-bold md:tracking-widest '>Place to Cart</button>
+                                        </>
                                         :
-                                        <button
-                                            onClick={handlePlaceAddToCart}
-                                            className=' md:w-3/4 lg:w-2/4 w-full active:bg-slate-600 mt-5 md:text-2xl md:px-12 px-5 py-2 bg-yellow-600 rounded-lg text-white font-bold md:tracking-widest hover:bg-yellow-500'>Place to Cart</button>
+                                        <>
+                                            {
+                                                parseInt(purchaseUnitInput) < product?.minimumOrder || parseInt(purchaseUnitInput) > product?.availableQuantity || purchaseUnitInput?.length === 0 ?
+
+
+                                                    <button
+                                                        disabled
+
+                                                        className=' md:w-3/4 lg:w-2/4 w-full  mt-5 md:text-2xl md:px-12 px-5 py-2 bg-gray-300 rounded-lg text-white font-bold md:tracking-widest '>Place to Cart</button>
+                                                    :
+                                                    <button
+                                                        onClick={handlePlaceAddToCart}
+                                                        className=' md:w-3/4 lg:w-2/4 w-full active:bg-slate-600 mt-5 md:text-2xl md:px-12 px-5 py-2 bg-yellow-600 rounded-lg text-white font-bold md:tracking-widest hover:bg-yellow-500'>Place to Cart</button>
+                                            }
+
+                                        </>
                                 }
 
                             </div>
